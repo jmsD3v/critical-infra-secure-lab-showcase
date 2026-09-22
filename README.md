@@ -80,8 +80,10 @@ estado real de cada equipo.
 
 **Un pozo informa solo lo suyo.** Al hacer clic en un pozo (en el
 diagrama o en la grilla táctil de celular) se abre su detalle flotante:
-presión, temperatura, caudal, carga en la varilla, velocidad, y control
-*start/stop* para el rol admin.
+presión de cabeza y de casing, temperatura, caudal, carga en la varilla,
+velocidad, nivel de fluido y el diagnóstico de llenado de la bomba
+(normal / pesca de gas / golpe de fluido), con control *start/stop*
+para el rol admin.
 
 <p align="center">
   <img src="docs/screenshots/02-well-popover.png" alt="Detalle de un pozo, flotante" width="80%">
@@ -124,6 +126,11 @@ Un recorrido por el dashboard: la locación completa, un pozo en marcha, la bate
 - **Diagrama animado, no una tabla de números** — líneas de flujo que se
   activan según el estado real de cada equipo, y cada pozo con su propia
   unidad de bombeo animada (sube y baja de verdad, no solo rota).
+- **Diagnóstico de pozo, no solo presión y caudal** — presión de casing
+  separada de la de cabeza, nivel dinámico de fluido, y el % de llenado
+  de la bomba con su diagnóstico (normal / pesca de gas / golpe de
+  fluido) — el mismo dato que calcula un pump-off controller real a
+  partir de la carta dinagráfica (ver [ADR 0020](docs/adr/0020-well-diagnostics-parity.md)).
 - **Motor de alarmas genérico** — cualquier campo de estado de cualquier
   tipo de dispositivo se vigila por separado, configurable por YAML sin
   tocar código.
@@ -213,6 +220,7 @@ sí y las consecuencias aceptadas — en [`docs/adr/`](docs/adr/):
 | [0017](docs/adr/0017-mqtt-tls.md) | MQTT con TLS por defecto |
 | [0018](docs/adr/0018-private-license-and-showcase-repo.md) | Código privado, repo showcase público |
 | [0019](docs/adr/0019-opc-ua-as-historian-bridge.md) | OPC UA como puente hacia un historian corporativo |
+| [0020](docs/adr/0020-well-diagnostics-parity.md) | Diagnóstico de pozo a la par de un sistema real de bombeo (casing, nivel de fluido, llenado) |
 
 ## Bugs reales encontrados en el camino
 
